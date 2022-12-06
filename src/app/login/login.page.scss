@@ -1,0 +1,42 @@
+ion-card{
+    ion-card-content{
+        ion-button{
+            --background: linear-gradient(to right, #2f162e, #517fa4);
+        }
+    }
+}
+.grad_back{
+    width: 100%;
+    height: 150px;
+    background: linear-gradient(to right, #2f162e, #517fa4);
+    border-bottom-right-radius: 50px;
+    position: relative;
+
+    .subject{
+        color: white;
+        font-weight: 600;
+        font-size: 26px;
+        position: absolute;
+        left: 30px;
+        bottom: 16px;
+    }
+
+    .btn_flex{
+        width: 100%;
+       
+        display: flex;
+        height: 50px;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 40px;
+    }
+
+    ion-icon{
+        font-size: 20px;
+        color: white;
+    }
+}
+ion-chip.chip{
+    background: linear-gradient(to right, #2f162e, #517fa4);
+    color: white;
+}

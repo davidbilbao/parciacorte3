@@ -1,0 +1,39 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click) = "logout()">
+        <p>Logout</p>
+        <ion-icon slot="end" name="exit-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>{{concert?.name}}</ion-title>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-title>Asistentes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list>
+    <ion-item>
+      <p>Personal que pagó el concierto:</p>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-item *ngFor = "let attendee of attendees">
+      <ion-avatar slot="start">
+        <img src="assets/icon-avatar/avatar.png" />
+      </ion-avatar>
+      <ion-label>
+        <h2>{{attendee?.name}} {{attendee?.lastname}}</h2>
+        <h3>Invitado especial</h3>
+      </ion-label>
+      <ion-icon slot="end" name = "trash-outline"  (click)="deleteAttendee(attendee.id)"></ion-icon>
+    </ion-item>
+  </ion-list>
+</ion-content>

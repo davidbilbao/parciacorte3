@@ -1,0 +1,66 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click) = "logout()">
+        <p>Logout</p>
+        <ion-icon slot="end" name="exit-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Mis conciertos</ion-title>
+  </ion-toolbar>
+  <ion-toolbar>
+    
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Configuraciones</ion-card-title>
+      <ion-card-subtitle>Agrega y administra nuevos conciertos</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-button color="" routerLink = "../create-concert" >
+              Crear concierto
+              <ion-icon name="add" slot="start"></ion-icon>
+            </ion-button>
+          </ion-col>
+          <!-- <ion-col>
+            <ion-button color="" (click)= "actualizarListaDeEventos()">
+              Actualizar
+              <ion-icon name="reload" slot="start"></ion-icon>
+            </ion-button>
+          </ion-col> -->
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+  <ion-card >
+    <ion-card-header padding>
+      <ion-card-title><strong>Mis conciertos</strong></ion-card-title>
+      <ion-card-subtitle>Mostrando todos los conciertos agregados. </ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list lines = "isset">
+        <ion-item *ngFor = "let concert of concerts" >
+          <ion-icon slot="end" name="arrow-forward-circle-outline" routerLink = "/detail-concert/{{concert.id}}">
+          </ion-icon>
+          <ion-icon slot="end" name = "trash-outline" button (click)="delete(concert)"></ion-icon>
+          <ion-icon slot="start" name="calendar-sharp">
+          </ion-icon>
+          <ion-label>
+            <h2>{{concert.name}}</h2>
+            <p style="margin-top: 8;">{{concert.cost | currency}}</p>
+            <!-- <div style="display: flex">
+              <ion-icon style="margin-right: 10px;" name="people-sharp"></ion-icon>
+              <p >25</p>
+            </div> -->
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+<br>
+</ion-content>

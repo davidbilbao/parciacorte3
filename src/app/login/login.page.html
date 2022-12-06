@@ -1,0 +1,64 @@
+<ion-header class="ion-no-border">
+  <div class="grad_back">
+    <ion-label class="subject">Conciertos PRO</ion-label>
+  </div>
+</ion-header>
+
+<ion-content>
+  <ion-card >
+    <ion-card-header color ="">
+      <ion-card-title>
+        Inicio de sesión
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content >
+      <form [formGroup] ="loginForm" (ngSubmit) ="loginUser($event)">
+        <ion-list lines ="none">
+          <ion-item>
+            <ion-label position ="floating">Correo: </ion-label>
+            <ion-input  formControlName = "email" type ="email" ></ion-input>
+          </ion-item>
+          <ion-item *ngIf ="emailField.errors && emailField.dirty">
+            <ion-chip color ="danger">
+              <ion-label *ngIf = "emailField.hasError('email')">Correo invalido</ion-label>
+              <ion-label *ngIf = "emailField.hasError('required')">El correo es requerido</ion-label>
+            </ion-chip>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position ="floating">Contraseña:</ion-label>
+            <ion-input formControlName ="password" type ="password"></ion-input>
+          </ion-item>
+          <ion-item *ngIf ="passwordField.errors && passwordField.dirty">
+            <ion-chip color ="danger">
+              <ion-label *ngIf = "passwordField.hasError('required')">La contraseña es requerida</ion-label>
+              <ion-label *ngIf = "passwordField.hasError('minlength')">La contraseña debe tener un minimo de 6 caracteres</ion-label>
+            </ion-chip>
+          </ion-item>
+
+          <ion-item >
+            <ion-col>
+              <ion-button [disabled]="loginForm.invalid" type ="submit" color ="" size ="medium" expand ="block">Ingresar</ion-button>
+            </ion-col>
+          </ion-item>
+        </ion-list>
+      </form>
+      
+      <ion-item >
+        <ion-grid>
+          <ion-row>
+            <ion-col class="ion-text-center">
+              <a routerLink ="/recover">¿Has olvidado tu contraseña?</a>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+
+      <ion-item lines="none">
+        <ion-text >
+          <p>¿No estás registrado? <ion-chip class="chip" routerLink ="/register" color =""><ion-label>Crear nueva cuenta</ion-label></ion-chip></p>
+        </ion-text>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

@@ -1,0 +1,49 @@
+<ion-header class="ion-no-border">
+  <div class="grad_back">
+    <div class="btn_flex">
+      <div>
+        <ion-buttons slot="start">
+          <ion-back-button></ion-back-button>
+        </ion-buttons>
+      </div>
+      <div>
+         <ion-buttons slot="end">
+          
+         </ion-buttons>
+      </div>
+    </div>
+    <ion-label class="subject">Restablecer</ion-label>
+  </div>
+</ion-header>
+
+<ion-content>
+  <ion-card >
+    <ion-card-header color ="">
+      <ion-card-title>
+        Restablecer
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content >
+      <form [formGroup] ="formReset" (ngSubmit) ="reset()">
+        <ion-list lines ="none">
+          <ion-item>
+            <ion-label position ="floating">Correo: </ion-label>
+            <ion-input  formControlName = "email" type ="email" ></ion-input>
+          </ion-item>
+          <ion-item *ngIf ="emailField.errors && emailField.dirty">
+            <ion-chip color ="danger">
+              <ion-label *ngIf = "emailField.hasError('email')">Correo invalido</ion-label>
+              <ion-label *ngIf = "emailField.hasError('required')">El correo es requerido</ion-label>
+            </ion-chip>
+          </ion-item>
+
+          <ion-item >
+            <ion-col>
+              <ion-button type ="submit" color ="" size ="medium" expand ="block">Enviar</ion-button>
+            </ion-col>
+          </ion-item>
+        </ion-list>
+      </form>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

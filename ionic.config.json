@@ -1,0 +1,7 @@
+{
+  "name": "ConciertosPRO",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

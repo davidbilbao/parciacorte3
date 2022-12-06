@@ -1,0 +1,132 @@
+<ion-header class="ion-no-border">
+  <div class="grad_back">
+    <div class="btn_flex">
+      <div>
+        <ion-buttons slot="start">
+          <ion-back-button></ion-back-button>
+        </ion-buttons>
+      </div>
+      <div>
+        <ion-buttons slot="secondary">
+          <ion-button routerLink="/attendees/{{(concert | async)?.id}}">
+            <ion-icon name="people-outline"></ion-icon>
+          </ion-button>
+          <ion-button (click)="logout()">
+            <ion-icon name="exit-outline"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </div>
+    </div>
+    <ion-label class="subject">{{(concert | async)?.name}}</ion-label>
+  </div>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-content>
+      <ion-list lines="none">
+        <ion-list-header color="">
+          <h2>Costo: </h2>
+        </ion-list-header>
+        <ion-item class="ion-item-center">
+          <p class="ion-text-center" slot="start">
+            <ion-chip class="rentable">
+              <h2>{{(concert | async)?.price | currency }}</h2>
+            </ion-chip>
+          </p>
+          <!-- <ion-icon slot="end" name="reload-outline" (click)="reloadEvent()"></ion-icon> -->
+          <ion-icon style="font-size: 32px ;" slot="end" name="trash-outline" (click)="deleteConcert()"></ion-icon>
+        </ion-item>
+      </ion-list>
+      <ion-list lines="none">
+        <ion-list-header color="">
+          <h2>Rentabilidad: </h2>
+        </ion-list-header>
+        <ion-item class="ion-item-center">
+          <p class="ion-text-center" slot="start">
+            <ion-chip [class.rentable]="(concert | async)?.revenue > 0" [class.no-rentable]="(concert | async)?.revenue < 0">
+              <h2>{{(concert | async)?.revenue | currency }}</h2>
+            </ion-chip>
+          </p>
+          <!-- <ion-icon slot="end" name="reload-outline" (click)="reloadEvent()"></ion-icon> -->
+          <!-- <ion-icon slot="end" name="trash-outline" (click)="deleteConcert()"></ion-icon> -->
+        </ion-item>
+        <ion-item>
+          <ion-icon name="people-outline"></ion-icon>
+          <h2 style="margin-left: 6px;"> {{attendees.length}}</h2>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- <ion-card>
+    <ion-card-header>
+      <ion-card-title>
+        Incluir talleres en evento
+      </ion-card-title>
+      <ion-card-subtitle>
+        Agrega los talleres en los cuales deseas presentar este evento.
+      </ion-card-subtitle>
+      <form [formGroup]="addTallerInEventForm" (ngSubmit)="incluirTallerEvento()">
+        <ion-item>
+          <ion-select formControlName="tallerInEvent" placeholder="Seleccionar taller" slot="start">
+            <ion-select-option 
+            *ngFor = "let taller of listTalleres" value="{{taller?.id}}">{{taller?.tituloTaller}}</ion-select-option>
+          </ion-select>
+          <br>
+          <ion-button slot = "end" expand = "block" size = "small"  type = "submit">Agregar</ion-button>
+        </ion-item>
+      </form>
+    </ion-card-header>
+    <ion-card-content>
+     <p >
+      <ion-chip *ngFor = "let tall of talleresIncluidos"  outline color="dark" (click)="excluirTallerEvento(tall?.idUnionEventTaller)">
+        <ion-label>{{tall?.tituloTaller}}</ion-label>
+        <ion-icon name="close-circle"></ion-icon>
+      </ion-chip>
+     </p>
+    </ion-card-content>
+  </ion-card> -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>
+        Agregar asistentes
+      </ion-card-title>
+      <ion-card-subtitle>
+        Agrega asistentes por {{(concert | async)?.price | currency }} y gana rentabilidad
+      </ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <form  [formGroup]="attendeeForm" (ngSubmit)="addAttendee()">
+        <ion-grid>
+          <ion-row>
+            <ion-col size="12">
+              <ion-item>
+                <ion-label position="floating">Nombres: </ion-label>
+                <ion-input formControlName="name" type="text"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position="floating">Apellidos: </ion-label>
+                <ion-input formControlName="lastname" type="text"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position="stacked">Precio del CONCIERTO</ion-label>
+                <p class="ion-text-center" style="margin-top: 5px;">
+                  <ion-chip color="success">
+                    <h1 >{{(concert | async)?.price | currency }}</h1>
+                  </ion-chip>
+                </p>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-button type="submit" expand="block" [disabled]="attendeeForm.invalid">
+                Agregar</ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </form>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

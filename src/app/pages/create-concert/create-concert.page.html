@@ -1,0 +1,67 @@
+<ion-header class="ion-no-border">
+  <div class="grad_back">
+    <div class="btn_flex">
+      <div>
+        <ion-buttons slot="start">
+          <ion-back-button></ion-back-button>
+        </ion-buttons>
+      </div>
+      <div>
+        <ion-buttons slot="end">
+          <ion-button (click)="logout()">
+            <ion-icon name="exit-outline"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </div>
+    </div>
+    <ion-label class="subject">Crear concierto</ion-label>
+  </div>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header color="">
+      <ion-card-title>
+        Registro de un nuevo concierto.
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <br>
+      <form [formGroup]="createConcertForm" (ngSubmit)="createConcert()">
+        <ion-list lines="none">
+          <ion-item>
+            <ion-label position="floating">Nombre del concierto</ion-label>
+            <ion-input formControlName="name" type="text"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="floating">Precio asistencia:</ion-label>
+            <ion-input formControlName="price" type="number"></ion-input>
+          </ion-item>
+
+
+          <ion-item>
+            <ion-label position="floating">Costo total: </ion-label>
+            <ion-input formControlName="cost" type="number"></ion-input>
+          </ion-item>
+
+
+          <ion-item>
+            <ion-label position="floating">Fecha:</ion-label>
+            <ion-datetime formControlName="date" displayFormat="MMM DD, YYYY" format="YYYY-MM-DD"
+              pickerFormat="DD MM YYYY" min="2021" max="2030">
+            </ion-datetime>
+          </ion-item>
+
+          <ion-item>
+            <ion-col>
+              <ion-button [disabled]="createConcertForm.invalid" type="submit" color="" size="medium" expand="block">
+                Crear concierto</ion-button>
+            </ion-col>
+          </ion-item>
+        </ion-list>
+      </form>
+
+    </ion-card-content>
+  </ion-card>
+</ion-content>

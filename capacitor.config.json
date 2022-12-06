@@ -1,0 +1,6 @@
+{
+  "appId": "io.concertsPro.parcial3",
+  "appName": "ConciertosPro",
+  "webDir": "www",
+  "bundledWebRuntime": false
+}

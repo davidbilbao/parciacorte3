@@ -1,0 +1,26 @@
+ion-toolbar{
+    --background: linear-gradient(to right, #2f162e, #517fa4);
+    color : white;
+
+    ion-buttons{
+        ion-button{
+            
+            color : white;
+        }
+    }
+}
+
+ion-icon{
+    font-size: 40px;
+}
+    
+
+
+ion-card{
+    ion-card-header{
+        --background: linear-gradient(to right, #243949, #517fa4);
+       ion-card-title, ion-card-subtitle{
+        color : white;
+       }
+    }
+}
